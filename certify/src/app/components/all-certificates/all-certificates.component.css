@@ -1,0 +1,28 @@
+
+.myprofile{
+    margin: 0px auto;
+    min-width: 20px;
+  }
+  .gallery{
+    width: 85%;
+    height: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap:20px;
+    grid-row-gap: 20px;
+  }
+  .cards{
+    height: auto;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-content{
+    margin-bottom: 1%;
+  }
+  ngb-rating {
+    color: red;
+    font-size: 1.5rem;
+}

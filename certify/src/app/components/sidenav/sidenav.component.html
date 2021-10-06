@@ -1,0 +1,66 @@
+<!-- <div>
+    <ng-sidebar-container>
+    <ng-sidebar [(opened)]="opened">
+        <button (click)="toggleSidebar()">close sidebar</button>
+        <p>Sidebar contents</p>
+    </ng-sidebar>
+    <div ng-sidebar-content>
+        <button (click)="toggleSidebar()">Toggle sidebar</button>
+    </div>
+    
+    </ng-sidebar-container>
+    </div> -->
+    <style>
+        a{
+            color: black;
+            text-decoration: none;
+        }
+        
+        li{
+            padding: 5%;
+            size: 30px;
+        }
+        
+        ul{
+            list-style-type: none;
+        }
+        
+        </style>
+<div class="text-center">
+    <nav *ngIf="!userservice.isTokenExpired()">
+    <ul style="font-family: 'Roboto Mono';">
+        <li><a routerLink="/" routerActiveLink="true"><h4>Home page</h4></a></li>
+        <li><a routerLink="/signup" routerLinkActive="true"><h4>Register</h4></a></li>  
+        <li><a routerLink="/signin" routerLinkActive="true"><h4>Signin</h4></a></li>
+        <li><a routerLink="/adminsignin" routerLinkActive="true"><h4>Admin Signin</h4></a></li>
+    </ul>
+</nav>
+
+<nav *ngIf="userservice.isTokenExpired()">
+    <ul class="nav justify-content-end" style="padding:20px">
+    <li class="nav-item" style="margin-left: 10px;"><a routerLink="/" routerActiveLink="true" ><h4>Home page</h4></a></li>
+    <li class="nav-item" style="margin-left: 10px;"><a routerLink="/profile" routerActiveLink="true"><h4>Profile Page</h4></a></li>
+    <li class="nav-item" style="margin-left: 10px;"><button class="btn btn-lg btn-danger" id="remove" name="delete" (click)="open(mymodal)">
+        <ng-template #mymodal let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">delete User</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            are you sure you want to Logout
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-primary close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              Cancel</button>
+              <button type="button" class="btn btn-danger" (click)="modal.close('Save click')" (click)="func()">Yes
+            </button>
+          </div>
+        </ng-template>
+        <strong>logout</strong>      
+      </button></li>
+
+</ul>
+</nav>
+</div>

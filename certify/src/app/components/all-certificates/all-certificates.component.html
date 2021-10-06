@@ -1,0 +1,25 @@
+<div style="height: 5%;" class="text-center">  <h1>certificates Data</h1>
+</div>
+<div class="myprofile">
+    <div class="search-hero" style="max-width: 500px; padding: 40px;margin: auto;display: flex;">
+        <input class="form-control bi bi-search" type="text" name="search" [(ngModel)]="searchText" placeholder="Search..">
+        <button type="button" class="btn btn-dark"><i class="bi bi-search"></i></button>
+        
+      </div>
+  <div class="gallery">
+    <div class="card cards" style="width:20rem;display: flex;" *ngFor="let certificate of data | filter:searchText">
+      <div style="float: right;">
+        <button (click)="delete(certificate._id)" type="button" class="btn"><i class="bi bi-trash-fill"></i></button>
+      <div class="card-image">
+      <img class="card-img-top" style=" margin: auto; padding: 20px;" src={{certificate.photo}} alt="no photo">
+    </div>
+      <div class="card-content">
+        <p class="card-text">{{certificate.title}}</p>
+        <p class="card-text">{{certificate.body}}</p>
+        <p class="card-text">{{certificate.rating}}</p>
+        <ngb-rating [max]=5 [rate]=certificate.rating [readonly]="true"></ngb-rating>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
