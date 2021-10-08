@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
-/* @import "../node_modules/bootstrap/scss/mixins/_alert.scss"; */
-/* @import "~bootstrap/scss/utilities"; */
+
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
 body{

@@ -1,0 +1,65 @@
+
+<div style="display: flex; font-family: 'Roboto Mono'; padding: 30px; justify-content: space-around;">
+ <div class="card" style="width: 30%;">
+    <div class="card-body">
+        <h2 class="text-center">Total No.of Users</h2>
+        <h1 class="text-center" style="color: green; font-size: 100px;">{{usersdata.length}}</h1>
+    </div>
+  </div>
+  <div class="card" style="width: 30%;">
+    <div class="card-body">
+        <h2 class="text-center">Total no.of Certificates</h2>
+        <h1 class="text-center" style="color: green; font-size: 100px;">{{data.length}}</h1>
+    </div>
+  </div>
+  <div class="card" style="width: 30%;">
+    <div class="card-body">
+        <h2 class="text-center">Total no.of Admins</h2>
+        <h1 class="text-center" style="color: green; font-size: 100px;">01</h1>
+    </div>
+  </div>
+</div>
+<div class="card" style="width: 95%;margin: auto;">
+    <div class="card-body">
+        <h1> All users list</h1>
+        <table class="table table-bordered text-center">
+            <thead>
+              <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">username</th>
+                <th scope="col">emails</th>
+              </tr>
+                </thead>
+                <tbody *ngFor="let user of usersdata">
+                  <tr>
+                    <th scope="row">#</th>
+                    <td>{{user.name}}</td>
+                    <td ><p class="emailhover btn"  (click)="send(user._id)">{{user.email}}</p></td>
+                    <td>
+                    <button class="btn" id="remove" name="delete" (click)="open(mymodal)">
+                        <ng-template #mymodal let-modal>
+                          <div class="modal-header">
+                            <h4 class="modal-title" id="modal-basic-title">delete User</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                              <span aria-hidden="true">×</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            are you sure you want to delete <p style="color: red;">{{user.email}}
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-primary close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                              Cancel</button>
+                              <button type="button" class="btn btn-danger" (click)="modal.close('Save click')" (click)="delete(user._id)">Yes
+                            </button>
+                          </div>
+                        </ng-template>
+                        <strong><i class="bi bi-trash-fill"></i></strong>      
+                      </button>
+                      </td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+    </div>
+</div>

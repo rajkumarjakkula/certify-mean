@@ -1,0 +1,10 @@
+<div *ngFor="let i of requests" style="padding:10px;">
+    <div class="card" style="padding: 10px; border-color: green;">
+        <div class="card-body">
+        <h3>you sent a request to this person based on his profile</h3>
+        <b style="text-decoration: underline;">His profile:</b>
+        <h4 style="color: green;">email : {{i.email}}</h4>
+        <h6>name : {{i.name}}</h6>
+       </div>
+    </div>
+  </div>

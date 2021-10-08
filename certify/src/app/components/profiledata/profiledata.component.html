@@ -1,4 +1,4 @@
-<div style="max-width :550px;margin:0px auto">
+<div>
     <div style="display:flex; justify-content:space-around; margin:20px 0px; border-bottom:1px solid grey">
         <div>
             <img style="width:160px;height:160px; border-radius:80px"
@@ -6,115 +6,64 @@
         
         </div>
         <div style="margin: 30px;">
-            <h4>{{name}}</h4>
+            <h4>{{profile.name}}</h4>
             <div style="display:flex; justify-content:space-around;width:100%">
-                <h6>{{email}}</h6>
+                <h6>{{profile.email}}</h6>
             </div>
         </div>
     </div>
-        
-    <button class="btn btn-lg btn-outline-primary" id="update" name="update" (click)="open(mymodal)">
-        <ng-template #mymodal let-modal>
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">update User</h4>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <h1 class="text-center">Update User</h1>
+</div>
 
-
-              <div class="form-group">
-                  <input type="file" 
-          
-                  (change)="onFileSelected($event)">
-              </div>
-              <div class="form-group">
-              <label for="title">Title</label>
-              <input type="text" name="title" class="form-control" placeholder="Enter course title" [(ngModel)]="title">
-              </div>
-              <div class="form-group">
-                <label for="text">Description</label>
-                <input type="text" name="body" class="form-control" placeholder="About this course" [(ngModel)]="body">
-                    </div>
-                    <div class="form-group">
-                      <label for="email">Rating</label>
-                      <input type="email" name="email" class="form-control" placeholder="your rating" [(ngModel)]="rating">
-                          </div>
-              <div class="form-group">
-                  <label for="email">Expiry date</label>
-                  <input type="email" name="name" class="form-control" placeholder="Expiry date" [(ngModel)]="expiry">
-              </div>
-          </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-primary close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-              Cancel</button>
-              <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="onsubmit()">Yes</button>
-          </div>
-        </ng-template>
-        <strong>add certificate</strong>
-      </button>
-      
-</div>
-<div style="height: 1%; border-bottom:1px solid grey">
-</div>
-<div style="height: 5%;" class="text-center">  <h1>My certificates</h1>
-</div>
 <div class="myprofile">
-  <div class="gallery">
-    <div class="card cards" style="width:20rem;display: flex;" *ngFor="let certificate of certificates">
-      <div style="float: right;">
-        <button><i class="bi bi-trash-fill" (click)="delete(certificate._id)"></i></button>
-      <div class="card-image">
-      <img class="card-img-top" style="margin: auto;" src={{certificate.photo}} alt="Card image cap">
+    <div class="gallery">
+      <div class="card cards" style="width:20rem;display: flex;" *ngFor="let certificate of data">
+        <div style="float: right;">
+        <div class="card-image">
+        <img class="card-img-top" style="margin: auto;" src={{certificate.photo}} alt="Card image cap">
+      </div>
+        <div class="card-content">
+          <b class="card-text">{{certificate.title}}</b>
+          <p class="card-text">{{certificate.body}}</p>
+          <!-- <p class="card-text">{{certificate.rating}}</p> -->
+         
+          <div *ngIf="1==certificate.rating">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+          </div>
+          <div *ngIf="2==certificate.rating">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+          </div>
+          <div *ngIf="3==certificate.rating">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+          </div>
+          <div *ngIf="4==certificate.rating">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+          </div>
+          <div *ngIf="5==certificate.rating">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+            
+        </div>
+        </div>
+        </div>
+      </div>
     </div>
-      <div class="card-content">
-        <b class="card-text">{{certificate.title}}</b>
-        <p class="card-text">{{certificate.body}}</p>
-        <!-- <p class="card-text">{{certificate.rating}}</p> -->
-       <p style="color: red;">rating</p>
-        <div *ngIf="1==certificate.rating">
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star"></i>
-          <i class="bi bi-star"></i>
-          <i class="bi bi-star"></i>
-          <i class="bi bi-star"></i>
-        </div>
-        <div *ngIf="2==certificate.rating">
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star"></i>
-          <i class="bi bi-star"></i>
-          <i class="bi bi-star"></i>
-        </div>
-        <div *ngIf="3==certificate.rating">
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star"></i>
-          <i class="bi bi-star"></i>
-        </div>
-        <div *ngIf="4==certificate.rating">
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star"></i>
-        </div>
-        <div *ngIf="5==certificate.rating">
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-        </div>
-          
-      </div>
-      <p class="card-text"> posted Date:{{certificate.time | date:'dd/MM/yyyy'}}</p>
-      </div>
-      </div>
-    </div>
-  </div>

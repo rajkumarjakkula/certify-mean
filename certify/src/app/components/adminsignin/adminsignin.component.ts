@@ -31,9 +31,9 @@ export class AdminsigninComponent implements OnInit {
     }
     this.userservice.adminSignin(newTask).subscribe(data=>{
       this.data=data;
-      //console.log(data)
+      console.log(data)
       if(data.token){
-      this.userservice.storeToken(data.token,data.user);
+      this.userservice.storeAdminToken(data.token,data.admin);
       this.toastr.success("Successfully SignIn");
       this.router.navigate([''])
       

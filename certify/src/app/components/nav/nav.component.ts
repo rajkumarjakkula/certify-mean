@@ -11,5 +11,9 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  opened: boolean = false;
+ 
+  toggleSidebar() {
+    this.opened = !this.opened;
+  }
 }

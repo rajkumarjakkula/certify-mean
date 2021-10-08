@@ -8,18 +8,62 @@
       </div>
   <div class="gallery">
     <div class="card cards" style="width:20rem;display: flex;" *ngFor="let certificate of data | filter:searchText">
-      <div style="float: right;">
-        <button (click)="delete(certificate._id)" type="button" class="btn"><i class="bi bi-trash-fill"></i></button>
+      <div>
+        <div style="float: right;">
+        <button (click)="delete(certificate._id)" type="button" class="btn"><b class="bi bi-trash-fill"></b></button>
+        </div>
+        <!-- <p class="card-text">{{certificate.postedBy}}</p> -->
       <div class="card-image">
       <img class="card-img-top" style=" margin: auto; padding: 20px;" src={{certificate.photo}} alt="no photo">
     </div>
       <div class="card-content">
         <p class="card-text">{{certificate.title}}</p>
         <p class="card-text">{{certificate.body}}</p>
-        <p class="card-text">{{certificate.rating}}</p>
-        <ngb-rating [max]=5 [rate]=certificate.rating [readonly]="true"></ngb-rating>
+        <!-- <p class="card-text">{{certificate.rating}}</p> -->
+        <div *ngIf="4==certificate.rating">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star"></i>
+
+        </div>
+        <div *ngIf="5==certificate.rating">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <div *ngIf="1==certificate.rating">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star"></i>
+          <i class="bi bi-star"></i>
+          <i class="bi bi-star"></i>
+          <i class="bi bi-star"></i>
+        </div>
+        <div *ngIf="2==certificate.rating">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star"></i>
+          <i class="bi bi-star"></i>
+          <i class="bi bi-star"></i>
+        </div>
+        <div *ngIf="3==certificate.rating">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star"></i>
+          <i class="bi bi-star"></i>
+
+        </div>
+        posted Date:{{certificate.time | date:'dd/MM/yyyy'}}
+        </div>
       </div>
-      </div>
+
+      <div>
+        <button class="btn btn-primary" (click)="sendrequest(certificate._id,certificate.postedBy)">Send Request</button>
+        </div>
       </div>
     </div>
   </div>

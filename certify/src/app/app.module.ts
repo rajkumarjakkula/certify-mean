@@ -11,13 +11,17 @@ import { SignupComponent } from './components/signup/signup.component';
 import {HttpClientModule} from '@angular/common/http'
 import { ProfileComponent } from './components/profile/profile.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-// import { SidebarModule } from 'ng-sidebar';
+ import { SidebarModule } from 'ng-sidebar';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllCertificatesComponent } from './components/all-certificates/all-certificates.component';
 import { AdminsigninComponent } from './components/adminsignin/adminsignin.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SocialAuthServiceConfig,SocialLoginModule,GoogleLoginProvider} from 'angularx-social-login';
+import { AdminsidedataComponent } from './components/adminsidedata/adminsidedata.component';
+import { ProfiledataComponent } from './components/profiledata/profiledata.component';
+import { RequestsComponent } from './components/requests/requests.component';
+import { AdminrequestsComponent } from './components/adminrequests/adminrequests.component';
 
 
 @NgModule({
@@ -31,7 +35,11 @@ import { SocialAuthServiceConfig,SocialLoginModule,GoogleLoginProvider} from 'an
     ProfileComponent,
     SidenavComponent,
     AllCertificatesComponent,
-    AdminsigninComponent
+    AdminsigninComponent,
+    AdminsidedataComponent,
+    ProfiledataComponent,
+    RequestsComponent,
+    AdminrequestsComponent
   ],
   imports: [
     FormsModule,
@@ -42,7 +50,8 @@ import { SocialAuthServiceConfig,SocialLoginModule,GoogleLoginProvider} from 'an
     BrowserAnimationsModule,
     Ng2SearchPipeModule,
     SocialLoginModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    SidebarModule.forRoot()
     
   ],
   providers: [

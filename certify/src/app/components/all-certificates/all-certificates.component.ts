@@ -16,11 +16,21 @@ export class AllCertificatesComponent implements OnInit {
   searchText: any;
   message:any;
   ngOnInit(): void {
+    this.allcertificates()
+  }
+
+  allcertificates(){
     this.service.allcertificates().subscribe(data=>{
       this.data=data
+     // console.log(data)
     })
   }
 
+  sendrequest(postid:any,userid:any){
+    this.service.sendRequest(userid).subscribe(data=>{
+      console.log(data)
+    })
+  }
   delete(id:any){
     console.log(id)
     this.service.deleteAdminsideCertificate(id).subscribe(data=>{
@@ -28,7 +38,7 @@ export class AllCertificatesComponent implements OnInit {
       console.log(this.message)
       if(this.message){
       this.toastr.error(this.message.message)
-      this.ngOnInit()
+      this.allcertificates()
     }
     })
   }

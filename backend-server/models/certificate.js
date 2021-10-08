@@ -25,7 +25,10 @@ const certificate = new mongoose.Schema({
         type:String,
         required:false
     },
-    // likes:[{type:ObjectId}],
+   toggle:{
+    type:Boolean,
+    
+   },
     postedBy:{
        type:ObjectId,
        ref:"Userdata"

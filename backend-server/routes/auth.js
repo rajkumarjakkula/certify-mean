@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const mongoose=require('mongoose')
 const User = mongoose.model('Userdata')
-//const Admin=mongoose.model('Admin')
+const Admin=mongoose.model('Admin')
 const bcrypt = require('bcryptjs')
 require('dotenv').config()
 const jwt=require("jsonwebtoken")
@@ -61,9 +61,9 @@ router.post('/socialLogin',async (req,res)=>{
             user1.save()
             .then(()=>{
                 const token=jwt.sign({_id:user1._id},JWT_SERECTKEY)
-                console.log(token)
+               // console.log(token)
                 const {_id,name,email}=user1
-             res.json({token:token,user:{_id,name,email}})
+             return res.json({token:token,user:{_id,name,email}})
             })
             .catch(error=>{
                  console.log(error)
@@ -78,7 +78,7 @@ router.post('/socialLogin',async (req,res)=>{
                 const token=await jwt.sign({_id:user._id},JWT_SERECTKEY)
                 //console.log(token)
                 const {_id,name,email}=user
-                res.json({token:token,user:{_id,name,email}})
+                return res.json({token:token,user:{_id,name,email}})
             }
             else{
                 res.send({message:"some problem in backend"})
@@ -120,33 +120,43 @@ router.post('/signin',(req,res,next)=>{
                 res.json({token:token,user:{_id,name,email}})
             }
             else
-            {
-                next()
+            {   
+                res.json({message:"incorrect password"})
             }  
         })
         .catch(err=>{
-            console.log(err)
+            res.json({error:err})
         })
     })
 })
 
 
-// router.post('/adminsign',async (req,res)=>{
-//     const {name,email,password}=req.body
-//     if(!name || !email || !password){
-//         return res.status(402).json({message:"please enter all the fields"})
-//     }
-//     try{
-//     const admin=await Admin.findOne({email:email})
-//     if(admin){
-
-//     }
-//     }
-//     catch(err){
-//         console.log(err)
-//     }
+router.post('/adminsignin',async (req,res)=>{
+    const {email,password}=req.body
+    if(!email || !password){
+        return res.status(402).json({message:"please enter all the fields"})
+    }
+    try{
+    const admin=await Admin.findOne({email:email})
+    if(admin){
+        const doMatch=await bcrypt.compare(password,admin.password)
+        if(doMatch){
+            const token=jwt.sign({_id:admin._id},JWT_SERECTKEY)
+            //console.log(token)
+            const {_id,adminname,email}=admin
+            res.json({token:token,admin:{_id,adminname,email}})
+        }
+        else{
+            res.json({message:"incorrect password"})
+        }
+    }
+    }
+    catch(err){
+        console.log(err)
+        res.send(err)
+    }
 
     
-// })
+})
 
 module.exports=router

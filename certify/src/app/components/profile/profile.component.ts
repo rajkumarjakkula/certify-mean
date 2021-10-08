@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AllservicesService } from 'src/app/services/allservices.service';
 import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common'
 
 
 @Component({
@@ -22,24 +23,11 @@ export class ProfileComponent implements OnInit {
   rating:string="";
   expiry:string="";
   message:any;
+  value:any;
   certificates:any=[];
   onFileSelected(event:any){
     //console.log(event)
     this.selectedFile=event.target.files[0];
-  }
-  ngOnInit(): void {
-    this.authservice.profile().subscribe(data=>{
-      this.data=data
-      this.email=this.data.email
-      this.name=this.data.name
-    })
-
-    this.authservice.mycertificates().subscribe(data=>{
-      this.certificates=data
-    })
-  }
-
-  onUpload():any{
     const data = new FormData()
     data.append("file",this.selectedFile)
     data.append("upload_preset","library_x")
@@ -47,9 +35,29 @@ export class ProfileComponent implements OnInit {
     this.http.post("https://api.cloudinary.com/v1_1/dnpuhqlav/image/upload",data)
     .subscribe(res=>{
       this.imageurl= res
-     // console.log(this.imageurl)
+      console.log(this.imageurl)
       this.imageurl= this.imageurl.url
     })
+  }
+  ngOnInit(): void {
+    this.getprofile()
+   
+  }
+
+  getprofile(){
+    this.authservice.profile().subscribe(data=>{
+      this.data=data
+      this.email=this.data.email
+      this.name=this.data.name
+    })
+    this.authservice.mycertificates().subscribe(data=>{
+      this.certificates=data
+    })
+  }
+
+  but(){
+    console.log(this.value)
+
   }
   
 
@@ -72,7 +80,7 @@ export class ProfileComponent implements OnInit {
     }
 
     )
-    this.ngOnInit()
+    this.getprofile()
   }
   delete(id:any){
     console.log(id)
@@ -81,7 +89,7 @@ export class ProfileComponent implements OnInit {
       console.log(this.message)
       if(this.message){
       this.toastr.error(this.message.message)
-      this.ngOnInit()
+      this.getprofile()
     }
     })
   }

@@ -1,0 +1,23 @@
+ng-sidebar-container{
+    height: 20px;
+}
+::ng-deep .ng-sidebar{
+    background-color: white;
+    width: 30%;
+    padding: 1rem 1rem;
+    box-shadow: 0 0 1rem rgba(85,85,85,0.5);
+}
+a
+{
+    color: black;
+    text-decoration: none;
+}
+
+li{
+    padding: 5%;
+    size: 30px;
+}
+
+ul{
+    list-style-type: none;
+}

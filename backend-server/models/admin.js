@@ -1,6 +1,8 @@
 const mongoose=require('mongoose')
-const AdminSchema = new mongoose.Schema({
-    name:{
+const {ObjectId} = mongoose.Schema.Types
+
+const Admin= new mongoose.Schema({
+    adminname:{
         required:true,
         type:String
     },
@@ -11,6 +13,10 @@ const AdminSchema = new mongoose.Schema({
     password:{
         required:true,
         type:String
+    },
+    sentrequests:{
+        type:ObjectId,
+        ref:"Userdata"
     }
 })
-mongoose.model('Admin',AdminSchema)
+mongoose.model("Admin",Admin)

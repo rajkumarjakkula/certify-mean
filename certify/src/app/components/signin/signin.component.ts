@@ -34,6 +34,10 @@ export class SigninComponent implements OnInit {
     this.userservice.signIn(newTask).subscribe(data=>{
       this.data=data;
       //console.log(data)
+      if(data.message){
+        this.toastr.error(data.message);
+        this.router.navigate(['/signin'])
+      }
       if(data.token){
       this.userservice.storeToken(data.token,data.user);
       this.toastr.success("Successfully SignIn");
@@ -41,7 +45,7 @@ export class SigninComponent implements OnInit {
       
       }
     },err=>{
-      console.log(err.error)
+      console.log(err)
       this.toastr.error(err.error.error);
       return
     });
@@ -50,16 +54,21 @@ export class SigninComponent implements OnInit {
     this.email=''
    }
   ngOnInit(): void {
-    this.userservice.isTokenExpired()
+    
+  }
+
+
+  signInWithGoogle(): void {
+    console.log(this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID));
     this.socialAuthService.authState.subscribe((user) => {
       if(user===null){
         console.log("log out called")
         this.router.navigate(['login'])
-      }else{
+      }
+      else{
         this.user = user;
         console.log(user)
         this.userservice.socialLogin({username:user.name,email:user.email,password:user.id}).subscribe((data)=>{
-          
           if(data){
             this.userservice.storeToken(data.token,data.user);
             this.toastr.success("welcome",data.user.name);
@@ -70,10 +79,5 @@ export class SigninComponent implements OnInit {
         })
       }
     });
-  }
-
-
-  signInWithGoogle(): void {
-    console.log(this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID));
   }
 }
