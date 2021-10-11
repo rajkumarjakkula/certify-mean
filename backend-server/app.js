@@ -28,6 +28,7 @@ app.use(express.json())
 app.use(require('./routes/crud'))
 app.use(require('./routes/auth'))
 app.use(require('./routes/paiduser'))
+
 app.listen(PORT,()=>{
     console.log("port working at", 5000)
 });

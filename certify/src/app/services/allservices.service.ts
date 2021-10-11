@@ -82,7 +82,7 @@ export class AllservicesService {
     {
         this.router.navigate(['/signin'])
     }
-    const url=this.apisign+'/handlerequests/'+id;
+    const url=this.apisign+'/userrequests/'+id;
     return this.http.get<any>(url,{headers:header})
   }
 
@@ -199,7 +199,7 @@ getAdminRequests(id:any):Observable<any>{
   {
       this.router.navigate(['/signin'])
   }
-  const url=this.apisign+'/seeallrequests/'+id;
+  const url=this.apisign+'/seeadminrequests/'+id;
     return this.http.get<any>(url,{headers:header})
 }
 
@@ -316,5 +316,10 @@ sendRequest(adminid:any):Observable<any>{
     else{
       return false
     }
+  }
+
+
+  sendmail(mail:any):Observable<any>{
+    return this.http.post<any>(this.apisign+"/sendmail",mail);
   }
 }

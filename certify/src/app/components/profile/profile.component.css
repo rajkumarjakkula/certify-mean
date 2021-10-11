@@ -40,3 +40,88 @@
   .card-content{
     margin-bottom: 1%;
   }
+  @media only screen and (max-width:800px){
+    .home{
+      width: 90%;
+      height: 80%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap:15px;
+      grid-row-gap: 15px;
+    }
+    .cards{
+      height: auto;
+      padding: 10px;
+      border-radius: 5px;
+      align-items: center;
+      justify-content: center;
+    }
+    .search{
+      width: 60%;
+      margin: auto;
+      border-color: black;
+        
+    } 
+    .gallery{
+      width:95%;
+      height: 70%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap:20px;
+      grid-row-gap: 20px;
+    }
+  
+  }
+  @media only screen and (max-width:550px){
+    .home{
+      width: 100%;
+      height: 80%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap:5px;
+      grid-row-gap: 5px;
+    }
+    .auth-card{
+      padding: 20px;
+      text-align: center;
+      max-width: 400px;
+      margin: 100px auto;
+    }
+    .cards{
+      height: auto;
+      padding: 1px;
+      border-radius: 5px;
+      align-items: center;
+      justify-content: center;
+    }
+    .search{
+      width: 80%;
+      margin: auto;
+      border-color: black;
+    }
+    
+    .gallery{
+      width:100%;
+      height: 50%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap:20px;
+      grid-row-gap: 20px;
+    }
+  }
+  @media only screen and (max-width:450px){
+    .gallery{
+      width:100%;
+      height: 50%;
+      margin: auto;
+      display: grid;
+      grid-template-columns:1fr;
+      grid-column-gap:20px;
+      grid-row-gap: 20px;
+    }
+  }
+  

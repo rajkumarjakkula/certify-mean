@@ -8,7 +8,7 @@ require('dotenv').config()
 const jwt=require("jsonwebtoken")
 const JWT_SERECTKEY=process.env.JWT_SERECTKEY;
 
-router.post('/signup',async (req,res)=>{
+router.post('/signup',(req,res)=>{
  
   const {name,email,password}=req.body
   if (!email  || !password ||!name){

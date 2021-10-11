@@ -76,11 +76,10 @@ export class ProfileComponent implements OnInit {
       if(this.message)
       {
         this.toastr.success("certificate added to your profile")
+        this.getprofile();
       }
-    }
-
-    )
-    this.getprofile()
+    })
+    
   }
   delete(id:any){
     console.log(id)

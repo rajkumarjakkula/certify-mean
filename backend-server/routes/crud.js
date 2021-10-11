@@ -7,6 +7,7 @@ const Certificate=mongoose.model('Certificate')
 require('dotenv').config()
 const jwt=require("jsonwebtoken")
 const JWT_SERECTKEY=process.env.JWT_SERECTKEY;
+const nodemailer = require('nodemailer');
 
 const middleware=(req,res,next)=>{
     //console.log(req.headers)
@@ -219,8 +220,9 @@ router.delete('/deleteadminsidecertificate/:Id',adminmiddleware,(req,res)=>{
     })
 })
 
-router.get('/handlerequests/:id',middleware,async (req,res)=>{
-   // console.log(req.params.id)
+router.get('/userrequests/:id',middleware,async (req,res)=>{
+   //console.log(req.params.id," jakkula")
+  
     const data=[]
     for(const name of req.params.id.split(",")){
         await Admin.findOne({_id:name})
@@ -230,15 +232,12 @@ router.get('/handlerequests/:id',middleware,async (req,res)=>{
         })
     }
     res.send(data)
-   
 })
 
-router.get('/seeallrequests/:id',middleware,async (req,res)=>{
-    // console.log(req.params.id)
+router.get('/seeadminrequests/:id',middleware,async (req,res)=>{
+   //  console.log(req.params.id,"   raj")
      const data=[]
-     if(req.params.id.length==0){
-         return res.json({message:"no requests are avilable"})
-     }
+     
      for(const name of req.params.id.split(",")){
          await User.findOne({_id:name})
          .then(savedUser=>{
@@ -275,5 +274,41 @@ router.put('/requests/:id',adminmiddleware,(req,res)=>{
         }
         
     })
+})
+
+
+router.post('/sendmail',(req,res)=>{
+
+    let fromMail = 'kingkumar.new@gmail.com';
+    let toMail = 'rajkumarjakkula969@gmail.com';
+
+    // let toMail = 'gnbaviskar2@gmail.com,gnbaviskar3@gmail.com';
+    let subject  = 'Intrested';
+    let text = "I am intrested with the role." 
+
+    // auth
+    const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'kingkumar.new@gmail.com',
+        pass: 'nxbtqyrdqqbciyah'
+    }
+    });
+
+    // email options
+    let mailOptions = {
+        from: fromMail,
+        to: toMail,
+        subject: subject,
+        text: text
+    };
+
+    // send email
+    transporter.sendMail(mailOptions, (error, response) => {
+        if (error) {
+            console.log(error);
+        }
+        console.log(response)
+    });
 })
 module.exports=router
