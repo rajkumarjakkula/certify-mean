@@ -22,17 +22,24 @@ Live View: http://ec2-3-141-165-196.us-east-2.compute.amazonaws.com/
 ## Getting Started
 ##### Run the application locally
 1. Clone or download this repo onto your machine.
-1. Install [application requirements](#application-requirements) if not done so already.
-1. In this we get two folders one is backend-server and certify
-1. Now open each folders using the command ```cd backend-server``` and ```cd certify ```
-1. now install dependencies in both terminals with the below command
-1. ```bash
-1. > npm install
+2. Install [application requirements](#application-requirements) if not done so already.
+3. In this we get two folders one is backend-server and certify
+4. Now open each folders using the command ```cd backend-server``` and ```cd certify ```
+5. now install dependencies in both terminals with the below command
+```bash
+> npm install
 ```
-1. If you don't have an account, [create a free one here](https://cloud.ibm.com).
-1. Login to your account via the command line: `ibmcloud login`
-1. Target your account ORG and SPACE  `ibmcloud target --cf`
-1. Create the instance of IBM Cloud Databases for MongoDB on IBM Cloud:  `ibmcloud cf create-service databases-for-mongodb standard mean-starter-mongodb`
-1. Rename `.env.example` file to `.env` and run `ibmcloud cf service-key mean-starter-mongodb "Service credentials-1"` for MONGODB_URL and CERTIFICATE_BASE64. Choose your own SESSION_SECRET.
-1. Run `node server.js` to start your app
-1. Open a browser to the link provided in the terminal prompt to view your app
+6. This command will install all the dependencies that are in package.json
+
+7. To run backend open terminal in the backend-server enter the below command.
+```bash
+> node app.js
+```
+8. To run angular frontend open terminal in the certify folder and enter the below code.
+```bash
+> ng serve
+```
+9. This command will run the angular frontend in ```http://localhost:4200```
+
+
+10. Done, the app should be looking like:
