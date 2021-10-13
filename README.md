@@ -61,7 +61,7 @@ Live View: http://ec2-3-141-165-196.us-east-2.compute.amazonaws.com/
 ![github-small](https://user-images.githubusercontent.com/52457149/137003558-897509b0-bfeb-42e7-9a29-ad3867bba83c.png)
 
 ### Profile Page
-#### In tihs page user can update his profile and add certifications
+#### In tihs page user can update his profile and add certifications(please reload the page if update button not shown in the page)
 ![github-small](https://user-images.githubusercontent.com/52457149/137003828-a2ccd276-f833-4c54-81c4-d64d32b4af76.png)
 
 ### User can see his requests from hiring people in this page and to send mail just click on intrested
